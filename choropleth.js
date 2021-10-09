@@ -18,14 +18,33 @@ let choropleth = function(){
 
         console.log(usMap);
         console.log(eduData);
-      
+        console.log(usMap.objects.counties.geometries[0].id)
+        console.log(eduData[0].fips)
 
         const h = 900;
         const w = 1200;
         const padding = 0;
         let projection = d3.geoMercator();  
         const path = d3.geoPath();
-                  
+
+        console.log(typeof(eduData[2].fips))
+        console.log(typeof(1005))
+        // console.log((eduData[2].fips))
+        // console.log((1005))
+
+        let countyIndex = function(countyId){
+            // return eduData index of the county object which has the id we're looking for
+            for (let i=0; i<eduData.length; i++){
+                if (eduData[i].fips == countyId){
+                    // console.log(i);
+                    return i;
+                }
+              
+            }
+            
+        }        
+
+        countyIndex(1005);
 
         let maparea = d3.select("#appContainer")
                         .append("svg")
@@ -39,8 +58,12 @@ let choropleth = function(){
         .enter()
         .append("path")
         .attr("d", path) 
-        // .attr("transform", "scale(0.82, 0.62)")
-        // .attr("class", "county");
+        .attr("class", "county")
+        .attr("data-fips",(d,i) => usMap.objects.counties.geometries[i].id)
+        .attr("countyIndex", (d,i) => countyIndex(usMap.objects.counties.geometries[i].id))
+        .attr("data-education", (d,i) => eduData[countyIndex(usMap.objects.counties.geometries[i].id)].bachelorsOrHigher)
+        .attr("data-area", (d,i) => eduData[countyIndex(usMap.objects.counties.geometries[i].id)].area_name)
+        .attr("data-state", (d,i) => eduData[countyIndex(usMap.objects.counties.geometries[i].id)].state)
 
 
         // console.log(path)
@@ -80,3 +103,4 @@ let choropleth = function(){
 };
 
 choropleth();
+

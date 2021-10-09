@@ -10,3 +10,7 @@ html{
   
     padding: 40px;
 }
+
+.county:hover{
+    fill:aquamarine
+}
