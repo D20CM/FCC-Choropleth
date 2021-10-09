@@ -1,18 +1,20 @@
-html{
-    height: 100%;
+body{
+    text-align: center;
+    background-color:rgb(255, 233, 204);
 }
+
+
 
 #appContainer{
-  
+    background-color:rgb(255, 233, 204);
+    position:absolute;
+    left: 200px;
 }
 
-#lorem{
-  
-    padding: 40px;
-}
+
 
 .county:hover{
-    fill:aquamarine
+    fill:rgb(174, 1, 226)
 }
 
 #tooltip{
