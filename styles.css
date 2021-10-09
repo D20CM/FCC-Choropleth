@@ -14,3 +14,10 @@ html{
 .county:hover{
     fill:aquamarine
 }
+
+#tooltip{
+    padding: 10px;
+    background-color: rgb(255, 215, 167);
+    border-radius: 10px;
+    opacity: 80%;
+}

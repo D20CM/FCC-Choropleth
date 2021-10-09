@@ -27,8 +27,8 @@ let choropleth = function(){
         let projection = d3.geoMercator();  
         const path = d3.geoPath();
 
-        console.log(typeof(eduData[2].fips))
-        console.log(typeof(1005))
+        // console.log(typeof(eduData[2].fips))
+        // console.log(typeof(1005))
         // console.log((eduData[2].fips))
         // console.log((1005))
 
@@ -45,6 +45,16 @@ let choropleth = function(){
         }        
 
         countyIndex(1005);
+
+
+        let tooltip = d3.select("body")
+        .append("div")
+        .attr("id", "tooltip")
+        .style("visibility", "hidden")
+        .style("position", "absolute")
+        .style("z-index","10")
+        // .style("background","#fff3e0")
+  
 
         let maparea = d3.select("#appContainer")
                         .append("svg")
@@ -64,19 +74,31 @@ let choropleth = function(){
         .attr("data-education", (d,i) => eduData[countyIndex(usMap.objects.counties.geometries[i].id)].bachelorsOrHigher)
         .attr("data-area", (d,i) => eduData[countyIndex(usMap.objects.counties.geometries[i].id)].area_name)
         .attr("data-state", (d,i) => eduData[countyIndex(usMap.objects.counties.geometries[i].id)].state)
+        .on("mouseover", function(e,d,){
+          
+            let area = eduData[countyIndex(d.id)].area_name
+            let state = eduData[countyIndex(d.id)].state
+            let education = eduData[countyIndex(d.id)].bachelorsOrHigher
+            
+            tooltip.text(area + ", " + state + ": " + education + "%")
+            return tooltip
+                    .style("visibility", "visible")
+                  
+                    
+        })
+
+        .on("mousemove", function(event, d){
+          return tooltip
+                  .style("top", (event.pageY-10)+"px")
+                  .style("left",(event.pageX+10)+"px");
+        })
+    
+      .on("mouseout", function(){
+          return tooltip
+                  .style("visibility", "hidden");
+      });
 
 
-        // console.log(path)
-
-        // maparea.selectAll("rect")
-        // .data(usMap.objects.counties)
-        // .enter()
-        // .append("rect")
-        // .attr("x", (d,i) => { return 10*i})
-        // .attr("y", (d,i) => 10+i)
-        // .attr("width", 10)
-        // .attr("height", 10)
-        // .attr("fill", "green")
 
 
 
