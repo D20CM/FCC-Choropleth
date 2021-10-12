@@ -1,14 +1,31 @@
 body{
     text-align: center;
-    background-color:rgb(255, 233, 204);
+    background-color:rgb(255, 242, 226);
+    align-items: center;
+    height: 100%;
+    /* overflow: hidden; */
+}
+
+h1{
+    font-family:Arial, Helvetica, sans-serif;   
+}
+h5{
+    font-family:Arial, Helvetica, sans-serif;  
+    font-size: medium;
+    font-weight: 400;
 }
 
 
 
+
 #appContainer{
-    background-color:rgb(255, 233, 204);
+    background-color:rgb(255, 242, 226);
     position:absolute;
-    left: 200px;
+    text-align: center;
+    left: 100px;
+    width: 100%;
+    max-width: 100%;
+   
 }
 
 
@@ -16,6 +33,7 @@ body{
 .county:hover{
     fill:rgb(174, 1, 226)
 }
+
 
 #tooltip{
     padding: 10px;
