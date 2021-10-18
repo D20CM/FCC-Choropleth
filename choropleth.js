@@ -22,9 +22,9 @@ let choropleth = function () {
             // console.log(eduData[0].fips)
 
             const h = 600;
-            const w = 1200;
+            const w = 1000;
             const padding = 0;
-            let projection = d3.geoMercator();
+            let projection = d3.geoMercator().fitSize([w,h]);
             const path = d3.geoPath();
             const eduArray = eduData.map(item => item.bachelorsOrHigher)
             console.log(eduArray)
@@ -48,7 +48,7 @@ let choropleth = function () {
                 }
             }
 
-            countyIndex(1005);
+            // countyIndex(1005);
 
 
             let tooltip = d3.select("body")
@@ -64,6 +64,7 @@ let choropleth = function () {
                 .append("svg")
                 .attr("width", w)
                 .attr("height", h)
+                .attr("id", "maparea")
                
 
             maparea
@@ -124,7 +125,11 @@ let choropleth = function () {
                                     .scale(xLegend)
                                     .ticks(8)
                                     .tickSize(12)
-                                    .tickValues([3,12,21,30,39,48,57,66])
+                                    .tickValues(legendArray)
+                                    .tickFormat("")
+                                    
+                                    
+                                    
                                     
 
                     
@@ -139,7 +144,7 @@ let choropleth = function () {
                                 .attr("y", 0)
                                 // .style("background-color", "pink")
                                 .attr("z-index", 100)
-                                .attr("transform", "translate(130, -570)")
+                                .attr("transform", "translate(270, -570)")
                                
                         legend.selectAll("rect")
                                 .data(legendArraySlice)
@@ -152,6 +157,14 @@ let choropleth = function () {
                                 .attr("width", boxwidth)
                                 .attr("fill", (d,i) => colorScale(d))
 
+                        legend.selectAll("text")
+                                .data(legendArray)
+                                .enter()
+                                .append("text")
+                                .attr("class", "axis-text")
+                                .attr("x", (d,i) => 10 + boxwidth*(i) - 5)
+                                .attr("y", 22)
+                                .text((item) => item + "%")
 
 
                                legend.append("g")
