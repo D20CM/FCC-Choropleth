@@ -104,6 +104,19 @@ let choropleth = function () {
                 });
 
 
+
+                // maparea
+                // .selectAll("path")
+                // .data(topojson.feature(usMap, usMap.objects.states).features)
+                // .enter()
+                // .append("path")
+                // .attr("d", path)
+                // .attr("class", "states")
+                // .attr("style","stroke:#1e2120;stroke-width:0.4")
+
+
+
+
                 let legend = function(){
                     // lh = 100
                     // lw = 200

@@ -7,10 +7,11 @@ body{
 }
 
 h1{
-    font-family:Arial, Helvetica, sans-serif;   
+    font-family:"Mukta", sans-serif;  
+   
 }
 h5{
-    font-family:Arial, Helvetica, sans-serif;  
+    font-family:"Mukta", sans-serif;  
     font-size: medium;
     font-weight: 400;
 }
@@ -29,7 +30,12 @@ h5{
 
 
 #appContainer{
-    background-color:rgb(255, 242, 226);
+    background-color:rgb(0,0,0);
+        background-image:url(http://www.zingerbugimages.com/backgrounds/gray_parchment_paper_background_1800x1600.jpg);
+        background-position:top left;
+        background-repeat:repeat;
+        background-attachment:fixed;
+    /* background-color:rgb(255, 242, 226); */
     position:absolute;
     text-align: center;
     /* left: 100px; */
@@ -47,15 +53,19 @@ h5{
 
 
 .county:hover{
-    fill:rgb(174, 1, 226)
+    fill:rgb(252, 255, 94)
 }
 
 
 #tooltip{
     padding: 10px;
-    background-color: rgb(255, 215, 167);
-    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.966);
+    border-radius: 5px;
     opacity: 80%;
+    font-family: "Mukta", sans-serif;
+    font-size: 20px;
+    font-weight: 200;
+    color: white;
 }
 
 #maparea{
@@ -70,6 +80,7 @@ h5{
 }
 
 .axis-text{
-    font-family:Arial, Helvetica, sans-serif;   
+    font-family:"Mukta", sans-serif;   
     font-size: 10px;
+    font-weight: 200;
 }
