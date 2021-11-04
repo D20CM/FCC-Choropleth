@@ -24,7 +24,7 @@ let choropleth = function () {
             const h = 600;
             const w = 1000;
             const padding = 0;
-            let projection = d3.geoMercator().fitSize([w,h]);
+            let projection = d3.geoMercator();
             const path = d3.geoPath();
             const eduArray = eduData.map(item => item.bachelorsOrHigher)
             console.log(eduArray)
